@@ -1,0 +1,22 @@
+name: Issue workflow
+
+on:
+  issues:
+    types: [opened, edited, closed]
+  workflow_dispatch:
+
+jobs:
+  comment-with-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Comment on issue
+        run: |
+          if [ "${{ github.event.action }}" == "opened" ]; then
+            echo "Issue opened: ${{ github.event.issue.title }}"
+          elif [ "${{ github.event.action }}" == "edited" ]; then
+            echo "Issue edited: ${{ github.event.issue.title }}"
+          elif [ "${{ github.event.action }}" == "closed" ]; then
+            echo "Issue closed: ${{ github.event.issue.title }}"
+          fi
+        shell: bash
