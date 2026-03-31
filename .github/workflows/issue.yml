@@ -13,10 +13,10 @@ jobs:
       - name: Comment on issue
         run: |
           if [ "${{ github.event.action }}" == "opened" ]; then
-            echo "Issue opened: ${{ github.event.issue.title }}"
+            echo "Issue opened: ${{ github.event.issue.number }}"
           elif [ "${{ github.event.action }}" == "edited" ]; then
-            echo "Issue edited: ${{ github.event.issue.title }}"
+            echo "Issue edited: ${{ github.event.issue.number }}"
           elif [ "${{ github.event.action }}" == "closed" ]; then
-            echo "Issue closed: ${{ github.event.issue.title }}"
+            echo "Issue closed: ${{ github.event.issue.number }}"
           fi
         shell: bash
