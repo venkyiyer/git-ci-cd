@@ -35,3 +35,8 @@ variable "config" {
 
     }
 }
+
+variable "bucket-names"{
+    type = list(string)
+    default = [ "venky-bucket-1", "venky-bucket-2"]
+}

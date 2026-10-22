@@ -1,12 +1,12 @@
 
-# resource "aws_s3_bucket" "venky-first-bucket" {
-#   bucket = "${var.bucket-env-prefix}-venky-s3-first-bucket"
-
-#   tags = {
-#     Name        = "My bucket"
-#     Environment = "Dev"
-#   }
-# }
+resource "aws_s3_bucket" "venky-first-bucket" {
+    count = 2
+    bucket = var.bucket-names[count.index]
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
 
 resource "aws_instance" "venky-ec2-instance" {
     count = var.instance_count
